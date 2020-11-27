@@ -1,0 +1,38 @@
+// ===========================================================================================
+// [Typography] 기본 설정 & 레티나 지원
+// ===========================================================================================
+// 폰트 기본 설정
+html
+  font-size: 10px
+  body
+    font-family: $webfont
+    font-size: rem($ph-fz)
+    line-height: $fz-scale
+    color: $text-black
+
+// 레티나 지원
++retina (4)
+  body
+    -webkit-font-smoothing: antialiased
+
+// ===========================================================================================
+// [Typography] 타이포그라피 설계
+// ===========================================================================================
+// 제목 폰트 사이즈 / 행간 비율
+@each $header, $size in (h1: $h1-fz, h2: $h2-fz, h3: $h3-fz, h4: $h4-fz, h5: $h5-fz, h6: $h6-fz)
+  #{$header}
+    font-size: $size
+    line-height: 1
+
+// 본문 폰트 사이즈 / 행간 비율
+p
+  font-size: $ph-fz
+  line-height: $fz-scale
+
+//  사이즈
+small
+  font-size: 80%
+
+// 강조 폰트
+b, strong
+  font-weight: $fw-regular

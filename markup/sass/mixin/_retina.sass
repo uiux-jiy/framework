@@ -1,0 +1,11 @@
+// ===========================================================================================
+// 고해상도 배경 이미지 설정
+// ===========================================================================================
+=retina ($ratio-num)
+  @media only screen and (-webkit-min-device-pixel-ratio: $ratio-num),
+  only screen and (          min--moz-device-pixel-ratio: $ratio-num),
+  only screen and (            -o-min-device-pixel-ratio: #{$ratio-num}/1),
+  only screen and (               min-device-pixel-ratio: $ratio-num),
+  only screen and (                       min-resolution: (96*$ratio-num) + dpi),
+  only screen and (                       min-resolution: $ratio-num + dppx)
+    @content

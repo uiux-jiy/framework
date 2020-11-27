@@ -1,0 +1,14 @@
+// ===========================================================================================
+// 말줄임 처리
+// ===========================================================================================
+=word-short ($extend: true)
+    // 미디어쿼리 내부 사용 시 $extend: false 사용
+    @if $extend
+        @extend %word-short
+    @else
+        overflow: hidden
+        white-space: nowrap
+        text-overflow: ellipsis
+
+%word-short
+    +word-short($extend: false)

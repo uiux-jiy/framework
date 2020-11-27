@@ -1,0 +1,29 @@
+// ===========================================================================================
+// 가로 기준 가운데 정렬
+// ===========================================================================================
+=ie-vw-align ($box-position: absolute, $w-box-size: null)
+  position: $box-position
+  width: $w-box-size
+  left: 50%
+  margin-left: -($w-box-size/2)
+
+// ===========================================================================================
+// 세로 기준 가운데 정렬
+// ===========================================================================================
+=ie-vh-align ($box-position: absolute, $h-box-size: null)
+  position: $box-position
+  height: $h-box-size
+  top: 50%
+  margin-top: -($h-box-size/2)
+
+// ===========================================================================================
+// 중앙 기준 가운데 정렬
+// ===========================================================================================
+=ie-vw-vh-align ($box-position: absolute, $w-box-size: null, $h-box-size: null)
+  position: $box-position
+  width: $w-box-size
+  height: $h-box-size
+  top: 50%
+  left: 50%
+  margin-top: -($h-box-size/2)
+  margin-left: -($w-box-size/2)

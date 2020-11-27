@@ -1,0 +1,106 @@
+// ===========================================================================================
+// [UI KIT] 팝업 스타일
+// ===========================================================================================
+// 팝업 컨테이너 (팝업 딤)
+.popup-container
+  position: fixed
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  z-index: 9999
+  .popup-dim
+    height: 100%
+    background: rgba(0, 0, 0, 0.1)
+
+// 팝업 영역
+.popup
+  width: 100%
+  height: 100vh
+  transform: inherit
+  background: #fff
+  box-shadow: 0 3px 10px rgba(0,0,0,0.3)
+  transform-style: preserve-3d
+  outline: 0
+  z-index: 10000
+  &.is-center
+    +vw-vh-align
+
+// 팝업 헤드라인
+.popup
+  .popup-headline
+    height: $popup-header-height
+    padding: 0 $popup-s-padding
+    background: $popup-header-bgcolor
+    @extend %clearfix
+    h2
+      float: left
+      color: #fff
+      line-height: $popup-header-height
+    .popup-close
+      position: relative
+      float: right
+      width: 18px
+      height: 18px
+      margin-top: 15px
+      text-indent: -9999px
+      &:before
+        position: absolute
+        top: 10px
+        left: -4px
+        display: block
+        width: 120%
+        height: 2px
+        background: #fff
+        transform: rotate(45deg)
+        content: ""
+      &:after
+        position: absolute
+        top: 10px
+        left: -4px
+        display: block
+        width: 120%
+        height: 2px
+        background: #fff
+        transform: rotate(-45deg)
+        content: ""
+
+// 팝업 콘텐츠
+.popup
+  .popup-content-box
+    height: calc(100vh - #{$popup-header-height})
+    padding: $popup-s-padding
+    .popup-content
+      +clearfix($extend: false)
+    .popup-btn-box
+      font-size: 0
+      text-align: right
+      +clearfix($extend: false)
+      button, [role="button"]
+        min-width: 60px
+        margin-left: 10px
+        &:first-child
+          margin-left: 0
+        + ._temp
+          margin-left: 0
+
++tablet
+  .popup
+    width: $popup-box-width-default
+    height: $popup-box-heigh-default
+    .popup-content-box
+    @each $height-size in $popup-box-hight
+      &.h-#{$height-size}
+        height: $height-size
+        .popup-content
+          height: calc(#{$height-size} - (#{$popup-header-height} + #{$popup-btn-box} + #{$popup-m-padding}))
+    @each $width-size in $popup-box-width
+      &.w-#{$width-size}
+        width: $width-size
+    .popup-headline
+      padding: 0 $popup-m-padding
+      h2
+        .popup-close
+          margin-top: 15px
+    .popup-content-box
+      padding: $popup-m-padding

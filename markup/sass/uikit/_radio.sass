@@ -1,0 +1,47 @@
+// ===========================================================================================
+// [UI KIT] 라디오버튼 스타일
+// ===========================================================================================
+// 체크 박스 내 변수 선언 공통 사용
+@import uikit/checkbox
+.radio-button
+  @extend .check-box
+
+// 라디오버튼 타입
+.radio-button
+  input
+    + label
+      &::before,
+      &::before
+        border-radius: 100%
+        border-color: $radiobox-border
+        background: $radiobox-bg
+        box-shadow: inset 0 0 0 0 $radiobox-bg
+        -webkit-transition: all 0.3s ease
+        -moz-transition: all 0.3s ease
+        -o-transition: all 0.3s ease
+        transition: all 0.3s ease
+    &:focus
+      + label
+        &::before, &::before
+          outline: none
+          border-color: $radiobox-focus
+    &:checked
+      + label
+        &::before, &::before
+          background: $radiobox-checked
+          box-shadow: inset 0 0 0 4px $radiobox-bg
+    &:disabled
+      + label
+        cursor: no-drop
+        &::before, &::before
+          border-color: $radiobox-border
+          background: $radiobox-disabled
+          background-size: 70%
+    &:checked:disabled
+      + label
+        cursor: no-drop
+        &::before, &::before
+          border-color: $radiobox-checked-disabled
+          background: $radiobox-checked-disabled
+          box-shadow: inset 0 0 0 4px $radiobox-checked-disabled
+          background-size: 70%

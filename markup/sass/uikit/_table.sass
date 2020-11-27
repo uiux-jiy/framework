@@ -1,0 +1,54 @@
+// ===========================================================================================
+// [UI KIT] 테이블 스타일
+// ===========================================================================================
+table
+  &.table-base
+    width: 100%
+    background-color: $table-base-bg
+    thead
+      border-top: 1px $table-base-border solid
+      border-bottom: 1px $table-base-border solid
+      th
+        background-color: $table-base-bg-tit
+        border: 1px $table-base-border solid
+
+    @each $align-position in $table-base-col-position
+      &.col-#{$align-position}
+        tr
+          th, td
+            text-align: $align-position
+    tr
+      th
+        background-color: $table-base-bg-tit
+        border-top: 1px $table-base-border solid
+        border-bottom: 1px $table-base-border solid
+
+      td
+        padding: $table-base-td-padding
+        border: 1px $table-base-border solid
+
+      th, td
+        height: $table-base-row-height
+        overflow: hidden
+        text-overflow: ellipsis
+        white-space: nowrap
+        &:first-child
+          border-left: 1px solid $bg-white
+        &:last-child
+          border-right: 1px solid $bg-white
+
+  @for $i from 1 through $table-base-col-nums
+    &.padding-zero-#{$i}
+      td
+        &:nth-of-type(#{$i})
+          padding: 0
+
+    @each $col-position in $table-base-col-position
+      &.col-#{$col-position}-all
+        td
+          text-align: $col-position
+
+      &.col-#{$col-position}-#{$i}
+        td
+          &:nth-of-type(#{$i})
+            text-align: $col-position

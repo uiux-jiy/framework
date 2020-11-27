@@ -1,0 +1,24 @@
+// ===========================================================================================
+// 플러스(+) 모양
+// ===========================================================================================
+=plus-shape ($length: 13px, $width: 3px, $vertical: 5px, $horizontal: 0, $bg-color: #5afeb6)
+  position: relative
+  &::before
+    position: absolute
+    top: $vertical
+    right: $horizontal
+    width: $length
+    height: $width
+    background: $bg-color
+    content: ""
+
+  &::after
+    position: absolute
+    top: $horizontal
+    right: $vertical
+    width: $width
+    height: $length
+    background: $bg-color
+    content: ""
+    transform: rotate(0deg)
+    transition: transform 0.25s ease

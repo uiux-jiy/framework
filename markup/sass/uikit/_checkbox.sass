@@ -1,0 +1,86 @@
+// ===========================================================================================
+// [UI KIT] 체크박스 스타일
+// ===========================================================================================
+.check-box
+  display: inline-block
+  height: $checkbox-height
+  line-height: $checkbox-height
+  input
+    position: absolute
+    min-width: $checkbox-sz
+    height: $checkbox-sz
+    line-height: $checkbox-sz
+    cursor: pointer
+    opacity: 0
+    + label
+      position: relative
+      padding-left: $checkbox-sz + 10
+      color: $checkbox-color
+      transform-style: preserve-3d
+      &::before
+        +vh-align
+        left: 0
+        display: inline-block
+        color: $checkbox-color
+        text-align: center
+        width: $checkbox-sz
+        height: $checkbox-sz
+        border: 1px solid $checkbox-border
+        border-radius: $checkbox-radius
+        background: $checkbox-bg center no-repeat
+        background-size: 120%
+        transition: all 0.1s ease
+        content: ""
+      span
+        visibility: hidden
+        position: absolute
+        top: -9999px
+        left: -9999px
+
+    span
+      display: inline-block
+    &:focus
+      + label
+        &::before
+          outline: none
+          border-color: $checkbox-checked-border
+    &:disabled
+      cursor: no-drop
+      + label
+        cursor: no-drop
+    &:checked:disabled
+      cursor: no-drop
+      + label
+        cursor: no-drop
+
+  input
+    &:checked
+      + label
+        &::before
+          background: $checkbox-checked-border url($checkbox-checked-png) center no-repeat
+          background: $checkbox-checked-border url($checkbox-checked-svg) center no-repeat
+          background-size: $checkbox-checked-width-size auto
+          border-color: $checkbox-checked-border
+    &:disabled
+      + label
+        cursor: no-drop
+        &::before
+          background-color: $checkbox-disabled-bg
+          border-color: $checkbox-border
+    &:checked:disabled
+      + label
+        cursor: no-drop
+        &::before
+          background: url($checkbox-disabled-png) center no-repeat
+          background: url($checkbox-disabled-svg) center no-repeat
+          background-color: $checkbox-disabled-bg
+          background-size: $checkbox-checked-width-size auto
+          border-color: $checkbox-border
+
+    input
+      + label
+        padding-left: $checkbox-sz + 10
+        line-height: $checkbox-height
+        &::before
+          width: $checkbox-sz
+          height: $checkbox-sz

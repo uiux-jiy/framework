@@ -1,0 +1,62 @@
+// ===========================================================================================
+// [UI KIT] 페이징 스타일
+// ===========================================================================================
+.paging
+  font-size: 0
+  text-align: center
+  margin-top: 30px
+  @extend %clearfix
+  button
+    position: relative
+    display: inline-block
+    min-width: $paging-box-width
+    height: $paging-box-height
+    font-size: $paging-font-size
+    color: $paging-font-color
+    vertical-align: top
+    border: 1px solid $paging-border-color
+    border-right-width: 0
+    &:last-child
+      border-right-width: 1px
+    &::before, &::after
+      padding-top: 5px
+      text-align: center
+    &:hover, &:focus
+      color: $bg-blue
+      border-bottom: 2px solid $paging-hover-border-color
+    &:active, &.is-selected
+      background: $paging-active-bg-color
+      border-color: transparent
+      color: $paging-active-font-color
+      &:hover
+        border-bottom-width: 1px
+
+    &.first-prev
+      &::before
+        +fa($icon: "\f053", $fw: 900)
+      &::after
+        +fa($icon: "\f053", $fw: 900)
+
+    &.prev
+      border-top-left-radius: 3px
+      border-bottom-left-radius: 3px
+      &::before
+        +fa($icon: "\f053", $fw: 900)
+
+    &.last-next
+      &::before
+        +fa($icon: "\f054", $fw: 900)
+      &::after
+        +fa($icon: "\f054", $fw: 900)
+
+    &.next
+      border-top-right-radius: 3px
+      border-bottom-right-radius: 3px
+      &::before
+        +fa($icon: "\f054", $fw: 900)
+
+  .paging-number
+    display: inline-block
+    button
+      &:last-child
+        border-right-width: 0

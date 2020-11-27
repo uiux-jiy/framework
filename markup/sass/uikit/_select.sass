@@ -1,0 +1,71 @@
+// ===========================================================================================
+// [UI KIT] 셀렉트 스타일
+// ===========================================================================================
+.select-box
+  $lh: $selectbox-height - 2
+  display: inline-block
+  position: relative
+  height: $selectbox-height
+  line-height: $lh
+  vertical-align: top
+  label
+    display: none
+
+  select
+    display: inline-block
+    width: $selectbox-width
+    height: $selectbox-height
+    line-height: $lh
+    padding:
+      top: 0
+      bottom: 0
+      left: 10px
+      right: $selectbox-arrow-down-width-size + 10px * 2
+
+    -webkit-padding-end: $selectbox-arrow-down-width-size+10px*2
+    -moz-padding-end: $selectbox-arrow-down-width-size+10px*2
+    -webkit-padding-start: 10px
+    -moz-padding-start: 10px
+    border:
+      width: $selectbox-border-width
+      style: solid
+      color: $selectbox-border-color
+
+    border-radius: $selectbox-border-radius
+    background: $selectbox-bg url($selectbox-arrow-down-png) right 10px top 50% no-repeat
+    background: $selectbox-bg url($selectbox-arrow-down-svg) right 10px top 50% no-repeat
+    background-size: $selectbox-arrow-down-width-size auto
+    option
+      background: $bg-white
+      color: inherit
+      &:checked
+        box-shadow: 0 0 10px 100px $bg-light-gray inset
+
+    &:checked
+      background: $selectbox-bg url($selectbox-arrow-down-png) right 10px top 50% no-repeat
+      background: $selectbox-bg url($selectbox-arrow-down-svg) right 10px top 50% no-repeat
+      border:
+        width: $selectbox-border-width
+        style: solid
+        color: $selectbox-border-color
+
+    &:focus
+      border:
+        width: $selectbox-border-width
+        style: solid
+        color: $selectbox-border-focus
+
+    &.is-active
+      background: $selectbox-bg url($selectbox-arrow-up-png) right 10px top 50% no-repeat
+      background: $selectbox-bg url($selectbox-arrow-up-svg) right 10px top 50% no-repeat
+
+    &::-ms-expand
+      display: none
+
+  &.full
+    display: block
+    select
+      width: 100%
+
+  &.email
+      display: none

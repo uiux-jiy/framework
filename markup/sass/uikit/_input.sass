@@ -1,0 +1,52 @@
+// ===========================================================================================
+// [UI KIT] 입력 스타일
+// ===========================================================================================
+input
+  min-width: $input-width
+  height: $input-height
+  line-height: $input-height - ($input-border-width * 2)
+  padding: 0 $input-padding
+  border: $input-border-width solid $input-border-color
+  border-radius: $input-border-radius !important
+  background: $input-bg
+  vertical-align: top
+  +placeholder($input-placeholder)
+  &:focus
+    border:
+      width: $input-border-width
+      style: solid
+      color: $input-border-focus
+  &.full
+    width: 100%
+
++ie10-11
+  input
+    width: $input-width
+
+.input-box
+  display: inline-block
+  @extend %clearfix
+  input
+    width: calc( 100% - #{$input-label-width} )
+  label
+    display: inline-block
+    width: $input-label-width
+    height: $input-height
+    line-height: $input-label-height - 2
+
+.input-date-box
+  font-size: 0
+  span
+    font-size: inherit
+  label
+    position: absolute
+    top: -9999px
+    visibility: hidden
+  input[type="date"]
+    min-width: $input-width - 20px !important
+    background: $input-bg url($icon-calendar-png) 100px 5px no-repeat
+    background: $input-bg url($icon-calendar-svg) 100px 5px no-repeat
+    background-size: 20px 22px
+    margin-right: 8px
+    &:last-child
+      margin-right: 20px

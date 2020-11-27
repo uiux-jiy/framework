@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+<head>
+  @@include('./_include/_meta.html', {
+    "author": "작성자",
+    "description": "사이트 설명",
+    "keywords": "키워드 작성"
+  })@@include('./_include/_og.html', {
+    "ogTitle": "콘텐츠 제목",
+    "ogUrl": "웹페이지 URL",
+    "ogType": "웹페이지 타입(blog, website 등)",
+    "ogImage": "표시되는 이미지",
+    "ogSiteName": "웹사이트 이름(URL과 다름)",
+    "ogDescription": "웹페이지 설명(제목 아래에 표시)",
+    "twitterCard": "트위터 카드 타입(요약정보, 사진, 비디오)",
+    "twitterTitle": "콘텐츠 제목",
+    "twitterDescription": "웹페이지 설명",
+    "twitterImage": "표시되는 이미지",
+    "alIosUrl": "ios 앱 URL",
+    "alIosAppStoreId": "ios 앱스토어 ID",
+    "alIosAppName": "ios 앱 이름",
+    "alAndroidUrl": "안드로이드 앱 URL",
+    "alAndroidAppName": "안드로이드 앱 이름",
+    "alAndroidPackage": "안드로이드 패키지 이름",
+    "alWebUrl": "안드로이드 앱 URL"
+  })@@include('./_include/_favicon.html', {
+    "webRoot": ".",
+    "themeColor": "#ffffff"
+  })@@include('./_include/_title.html', {
+    "title": "페이지 제목"
+  })@@include('./_include/_css.html', {
+    "webRoot": ".",
+    "styleCommon": {
+      "markup": "common.css",
+      "build": "common.min.css"
+    }
+  })
+  <!-- Style : Content Page -->
+  <link rel="stylesheet" href="./assets/css/guide.css">
+</head>
+
+<body>
+  <!-- [Stert] Container -->
+  <main class="guide grid">
+    <section class="all-link">
+      <h2 class="title">Project Guide</h2>
+
+      <!-- [Start] Convention -->
+      <h3 class="url-title">Convention</h3>
+      <div class="location">
+        <div class="link-box">
+          <li class="link-title">디바이스 지원 범위</li>
+          <li class="link-root">Windows 10</li>
+        </div>
+        <div class="link-box">
+          <li class="link-title">브라우저 지원 범위</li>
+          <li class="link-root">IE10+, Chrome</li>
+        </div>
+        <a class="link-box" href="guide/ui-kit.html" target="_blank" >
+          <p class="link-title">UI Kit</p>
+          <p class="link-root">guide/ui-kit.html</p>
+        </a>
+        <a class="link-box" href="front/example.html" target="_blank">
+          <p class="link-title check">Common UI</p>
+          <p class="link-root">front/example.html</p>
+        </a>
+      </div>
+      <!-- [End] Convention -->
+
+      <!-- [Start] Information Architecture (IA) -->
+      <h3 class="url-title">Information Architecture (IA)</h3>
+      <div class="location">
+        <h6 class="sub-title">파일명을 클릭하여 해당 페이지 확인하세요.</h6>
+        <table class="table-base">
+          <caption>전체 페이지 링크 / 작업 진철율</caption>
+          <colgroup>
+            <col width="12%">
+            <col width="10%">
+            <col width="16%">
+            <col width="16%">
+            <col width="auto">
+            <col width="8%">
+          </colgroup>
+          <thead>
+            <tr>
+              <th>Plan ID</th>
+              <th>Type</th>
+              <th>1depth</th>
+              <th>2depth</th>
+              <th>파일명</th>
+              <th>진척율</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>U01</td>
+              <td class="col-center">from</td>
+              <td>메인</td>
+              <td></td>
+              <td>
+                <a href="html/main.html" target="_blank" class="link-root" >html/main.html</a>
+              </td>
+              <td class="col-center">0%</td>
+            </tr>
+            <tr>
+              <td>U02</td>
+              <td class="col-center">from</td>
+              <td>로그인</td>
+              <td></td>
+              <td>
+                <a href="html/login.html" target="_blank" class="link-root" >html/login.html</a>
+              </td>
+              <td class="col-center">0%</td>
+            </tr>
+            <tr>
+              <td>U02-P01</td>
+              <td class="col-center">popup</td>
+              <td>로그인</td>
+              <td>회원가입</td>
+              <td>
+                <a href="html/popup/sign-up.html" target="_blank" class="link-root" >html/popup/sign-up.html</a>
+              </td>
+              <td class="col-center">0%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- [End] Information Architecture (IA) -->
+
+    </section>
+  </main>
+  <!-- [End] Container -->
+
+  @@include('./_include/_js.html', {
+    "webRoot" : ".",
+    "jsLib": {
+      "markup": "js-lib.js",
+      "build": "js-lib.min.js"
+    },
+    "jsCommon": {
+      "markup": "common.js",
+      "build": "common.min.js"
+    }
+  })
+</body>
+
+</html>

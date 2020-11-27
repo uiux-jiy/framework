@@ -1,0 +1,140 @@
+/* ======================================================================================== */
+/* [ Version      ] guide.css v0.1.0 © geulrara.design
+/* [ Author       ] 정인영
+/* [ Inquiry      ] geulrara-design@naver.com
+/* [ Date Updated ] 2020.11.26
+/* ======================================================================================== */
+
+// ===========================================================================================
+// [Framework] 공통 정의
+// ===========================================================================================
+@import "function"
+@import "variable"
+@import "mixin"
+
+// ===========================================================================================
+// [Base] 기본 스타일
+// ===========================================================================================
+@import "base/reset-css"
+@import "base/webfonts"
+
+// ===========================================================================================
+// [UI Kit] 공통 UI 정의
+// ===========================================================================================
+@import "ui-kit"
+
+// ===========================================================================================
+// [Guide] 가이드 링크
+// ===========================================================================================
+body
+  background: #f3f3f3
+  padding: rem(40px) rem(20px)
+
+.guide
+  .title
+    position: relative
+    font-size: rem(34px)
+    color: #1566c1
+    letter-spacing: -0.03em
+    padding-bottom: 10px
+    border-bottom: 1px solid #cad4e0
+    margin-bottom: 20px
+  .url-title
+    font-size: rem(24px)
+    font-weight: 300
+    color: #aaa
+    margin-top: 30px
+    margin-bottom: 10px
+    clear: both
+  .sub-title
+    font-size: rem(12px)
+    font-weight: 300
+    color: #aaaaaa
+    margin-bottom: 10px
+    text-align: right
+    &::before
+      content: "※ "
+
+.guide
+  .all-link
+    .location
+      padding: 20px
+      background: #fff
+      border: 1px solid #e2e2e2
+      @extend %clearfix
+
+      .link-box
+        float: left
+        width: 50%
+        padding: 5px 0
+        .link-title
+          &::before
+            +fa($icon: "\f0c1", $fw: 900)
+            font-size: rem(10px)
+            color: #ccc
+            vertical-align: middle
+            padding-right: 5px
+          > span
+            display: inline-block
+            margin-left: 4px
+            margin-bottom: 0
+          &.check
+            &::before
+              +fa($icon: "\f00c", $fw: 900)
+              color: #e51d68
+            &::after
+              font-size: rem(12px)
+              color: #257de0
+              content: "[완료]"
+              padding-left: 5px
+
+        .link-root
+          font-size: rem(12px)
+          color: #aaa
+          letter-spacing: 0.05em
+          display: block
+          margin-left: 15px
+          &::before
+            content: "( "
+          &::after
+            content: " )"
+
+// ===========================================================================================
+// [IA] UI 목록 링크
+// ===========================================================================================
+.guide
+  table
+    width: 100%
+    font-size: rem(12px)
+    background-color: $table-base-bg
+    border-top: 2px solid #000
+    thead
+      border-top: 1px $table-base-border solid
+      border-bottom: 1px $table-base-border solid
+      th
+        background-color: $table-base-bg-tit
+        border: 1px $table-base-border solid
+    tr
+      td
+        border: 1px $table-base-border solid
+        .link-root
+          &::before
+            +fa($icon: "\f0c1", $fw: 900)
+            font-size: rem(10px)
+            color: #ccc
+            vertical-align: middle
+            padding-right: 5px
+          &.check
+            &::before
+              +fa($icon: "\f00c", $fw: 900)
+              color: #e51d68
+      th, td
+        height: $table-base-row-height
+        padding: 0 10px
+        @each $align-position in $table-base-col-position
+          &.col-#{$align-position}
+            text-align: #{$align-position}
+        &:first-child
+          border-left: 1px solid $bg-white
+        &:last-child
+          border-right: 1px solid $bg-white

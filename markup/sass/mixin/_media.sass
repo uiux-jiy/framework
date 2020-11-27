@@ -1,0 +1,17 @@
+// ===========================================================================================
+// 그리드 시스템 - 데스크탑 우선 기준 설계
+// ===========================================================================================
+// 모바일, 테블릿 세로
+=mobile
+  @media (min-width: #{$breakpoint-mobile}) and (max-width: #{$breakpoint-tablet - 1px})
+    @content
+
+// 테블릿 가로
+=tablet
+  @media (min-width: #{$breakpoint-tablet}) and (max-width: #{$breakpoint-desktop - 1px})
+    @content
+
+// 테블릿 가로, 데스크탑
+=desktop
+  @media (min-width: #{$breakpoint-desktop})
+    @content

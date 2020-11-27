@@ -1,0 +1,38 @@
+// ===========================================================================================
+// 화살표 방향 표시 스타일
+// ===========================================================================================
+@mixin arrow ($arrow-direction: bottom, $arrow-size: 20px, $arrow-color: #000)
+  display: block
+  width: 0
+  height: 0
+  border-color: transparent
+  border-width: $arrow-size
+  border-style: solid
+
+  @if $arrow-direction == top
+    border-bottom-color: $arrow-color
+
+  @else if $arrow-direction == top-left
+    border-bottom-color: $arrow-color
+    transform: rotate(-45deg)
+
+  @else if $arrow-direction == top-right
+    border-bottom-color: $arrow-color
+    transform: rotate(45deg)
+
+  @else if $arrow-direction == bottom
+    border-top-color: $arrow-color
+
+  @else if $arrow-direction == bottom-left
+    border-top-color: $arrow-color
+    transform: rotate(-135deg)
+
+  @else if $arrow-direction == bottom-right
+    border-top-color: $arrow-color
+    transform: rotate(135deg)
+
+  @else if $arrow-direction == left
+    border-right-color: $arrow-color
+
+  @else if $arrow-direction == right
+    border-left-color: $arrow-color

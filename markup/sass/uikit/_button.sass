@@ -1,0 +1,32 @@
+// ===========================================================================================
+// [UI KIT] 버튼 스타일
+// ===========================================================================================
+// 기본버튼 사이즈 사이즈 설정
+[class*="btn-m-"]
+  +btn-size($fz: $btn-m-font-size, $mw: $btn-m-min-width, $h: $btn-m-height, $p: $btn-m-paddings, $br: $btn-m-border-radius)
+
+// 팝업버튼, 테이블버튼 설정
+[class*="btn-s-"], [class*="btn-s-popup"]
+  +btn-size($fz: $btn-s-font-size, $mw: $btn-s-min-width, $h: $btn-s-height, $p: $btn-s-paddings, $br: $btn-s-border-radius)
+
+// 버튼색 설정
+[class*="btn-"][type="button"], [class*="btn-"][role="button"]
+  // 기본 용도
+  +btn-style($color: $btn-base-font-color, $color-hover: $btn-base-font-color-hover, $bg: $btn-base-bg-color, $bd-color: $btn-base-border-color, $bg-hover: $btn-base-bg-color-hover, $bd-color-hover: $btn-base-border-color-hover)
+
+  // 저장 용도
+  &[class*="-blue"]
+    +btn-style($color: $btn-blue-font-color, $color-hover: $btn-blue-font-color-hover, $bg: $btn-blue-bg-color, $bd-color: $btn-blue-border-color, $bg-hover: $btn-blue-bg-color-hover, $bd-color-hover: $btn-blue-border-color-hover)
+
+  // 수정 용도
+  &[class*="-orange"]
+    +btn-style($color: $btn-orange-font-color, $color-hover: $btn-orange-font-color-hover, $bg: $btn-orange-bg-color, $bd-color: $btn-orange-border-color, $bg-hover: $btn-orange-bg-color-hover, $bd-color-hover: $btn-orange-border-color-hover)
+
+  // 검색 용도
+  &[class*="-green"]
+    +btn-style($color: $btn-green-font-color, $color-hover: $btn-green-font-color-hover, $bg: $btn-green-bg-color, $bd-color: $btn-green-border-color, $bg-hover: $btn-green-bg-color-hover, $bd-color-hover: $btn-green-border-color-hover)
+    +btn-style($color: $btn-orange-font-color, $color-hover: $btn-orange-font-color-hover, $bg: $btn-orange-bg-color, $bd-color: $btn-orange-border-color, $bg-hover: $btn-orange-bg-color-hover, $bd-color-hover: $btn-orange-border-color-hover)
+
+  // 삭제 용도
+  &[class*="-red"]
+    +btn-style($color: $btn-red-font-color, $color-hover: $btn-red-font-color-hover, $bg: $btn-red-bg-color, $bd-color: $btn-red-border-color, $bg-hover: $btn-green-bg-color-hover, $bd-color-hover: $btn-green-border-color-hover)
