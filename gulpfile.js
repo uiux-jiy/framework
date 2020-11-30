@@ -16,7 +16,7 @@ const { src, dest, watch, series, parallel } = require('gulp');
       gcmq                                   = require('gulp-group-css-media-queries'),
       imagemin                               = require('gulp-imagemin'),
       pngquant                               = require('imagemin-pngquant'),
-      browserSync                            = require('browser-sync');
+      browserSync                            = require('browser-sync').create();
       reload                                 = browserSync.reload;
 
 // ===========================================================================================
@@ -28,9 +28,9 @@ const BUILD = 'public';
 
 // Markup 폴더 지정
 let markup = {
-    html : SRC + '/**/*.html',
-    js   : SRC + '/_assets/js/**/*.js',
+    html : [SRC + '/**/*.html', '!markup/_*/**/*.html'],
     css  : SRC + '/sass/**/*.{sass,scss}',
+    js   : SRC + '/_assets/js/**/*.js',
     imgs : SRC + '/_assets/images/**/*',
     fonts: SRC + '/_assets/fonts/**/*',
     lib  : SRC + '/_assets/lib/**/*'
@@ -39,8 +39,8 @@ let markup = {
 // Public 폴더 지정
 let public = {
     html : BUILD + '/',
-    js   : BUILD + '/assets/js/',
     css  : BUILD + '/assets/css/',
+    js   : BUILD + '/assets/js/',
     imgs : BUILD + '/assets/images/',
     fonts: BUILD + '/assets/fonts/',
     lib  : BUILD + '/assets/lib/'
@@ -79,7 +79,7 @@ let scssOptions = {
 // ===========================================================================================
 exports.default = series( fileDel,
   parallel(
-    series(htmlComplie, scssCompile, concatJs, imgs, fontMove, libMove),
+    series( htmlComplie, scssCompile, concatJs, imgs, fontMove, libMove ),
     brwSync,
     watchFiles
   )
@@ -94,8 +94,7 @@ exports.build = series( htmlComplie, scssCompile, cssMin, concatJs, jsMin, imgs,
 // 폴더 제거 업무
 // ===========================================================================================
 function fileDel() {
-  return del([ BUILD, BUILD + '/*', BUILD + '/assets/css', BUILD + '/assets/js', BUILD + '/_include' ]);
-  // .pipe(del.sync([]))
+  return del([ BUILD, BUILD + '/*', BUILD + '/assets/css', BUILD + '/assets/js' ]);
 };
 
 // ===========================================================================================
