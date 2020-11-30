@@ -16,7 +16,8 @@ const { src, dest, watch, series, parallel } = require('gulp');
       gcmq                                   = require('gulp-group-css-media-queries'),
       imagemin                               = require('gulp-imagemin'),
       pngquant                               = require('imagemin-pngquant'),
-      browserSync                            = require('browser-sync').create();
+      browserSync                            = require('browser-sync');
+      reload                                 = browserSync.reload;
 
 // ===========================================================================================
 // 환경설정
@@ -27,7 +28,7 @@ const BUILD = 'public';
 
 // Markup 폴더 지정
 let markup = {
-    html : [ SRC + '/html/**/*.html', SRC + '/index.html' ],
+    html : SRC + '/**/*.html',
     js   : SRC + '/_assets/js/**/*.js',
     css  : SRC + '/sass/**/*.{sass,scss}',
     imgs : SRC + '/_assets/images/**/*',
@@ -93,19 +94,19 @@ exports.build = series( htmlComplie, scssCompile, cssMin, concatJs, jsMin, imgs,
 // 폴더 제거 업무
 // ===========================================================================================
 function fileDel() {
-  return del([ BUILD, BUILD + '/*', BUILD + '/assets/css', BUILD + '/assets/js' ]);
+  return del([ BUILD, BUILD + '/*', BUILD + '/assets/css', BUILD + '/assets/js', BUILD + '/_include' ]);
+  // .pipe(del.sync([]))
 };
 
 // ===========================================================================================
 // 관찰 업무
 // ===========================================================================================
 function watchFiles() {
-  watch(markup.imgs, imgs);
-  watch(markup.lib, libMove);
-  watch(markup.js, concatJs);
-  watch(markup.css, scssCompile);
-  watch(markup.html).on('change', htmlComplie);
-  watch([SRC + '/_assets/*', SRC + '/_include/*']).on('change', htmlComplie);
+  watch(markup.html, htmlComplie).on('change', reload);
+  watch(markup.css, scssCompile).on('change', reload);
+  watch(markup.js, concatJs).on('change', reload);
+  watch(markup.imgs, imgs).on('change', reload);
+  watch(markup.lib, libMove).on('change', reload);
 }
 
 // ===========================================================================================
@@ -132,7 +133,6 @@ function htmlComplie() {
     }))
     .pipe(strip({ trim: true, ignore: '/\/\*\*\s*\n([^\*]|(\*(?!\/)))*\*\//g' }))
     .pipe(dest(public.html))
-    .pipe(browserSync.reload({ stream:true }));
 };
 
 // ===========================================================================================
@@ -147,7 +147,6 @@ function scssCompile() {
     .pipe(dest(public.css))
     .pipe(filter("**/*.css"))
     .pipe(gcmq())
-    .pipe(browserSync.reload({ stream:true }));
 };
 
 // ===========================================================================================
@@ -167,7 +166,6 @@ function concatJs() {
   return src(markup.js)
     .pipe(concat('common.js'))
     .pipe(dest(public.js))
-    .pipe(browserSync.reload({ stream:true }));
 }
 
 // ===========================================================================================
@@ -195,7 +193,6 @@ function imgs() {
       })
     )
     .pipe(dest(public.imgs))
-    .pipe(browserSync.reload({ stream:true }));
 }
 
 // ===========================================================================================
