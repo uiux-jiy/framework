@@ -28,22 +28,23 @@ const BUILD = 'public';
 
 // Markup 폴더 지정
 let markup = {
-    html : [SRC + '/**/*.html', '!markup/_*/**/*.html'],
-    css  : SRC + '/sass/**/*.{sass,scss}',
-    js   : SRC + '/_assets/js/**/*.js',
-    imgs : SRC + '/_assets/images/**/*',
-    fonts: SRC + '/_assets/fonts/**/*',
-    lib  : SRC + '/_assets/lib/**/*'
+    html  : [SRC + '/**/*.html', '!markup/_*/**/*.html'],
+    htmls : SRC + '/**/*.html',
+    css   : SRC + '/sass/**/*.{sass,scss}',
+    js    : [SRC + '/_assets/js/**/*.js', '!markup/_assets/js/common.js'],
+    imgs  : SRC + '/_assets/images/**/*',
+    fonts : SRC + '/_assets/fonts/**/*',
+    lib   : SRC + '/_assets/lib/**/*'
 }
 
 // Public 폴더 지정
 let public = {
-    html : BUILD + '/',
-    css  : BUILD + '/assets/css/',
-    js   : BUILD + '/assets/js/',
-    imgs : BUILD + '/assets/images/',
-    fonts: BUILD + '/assets/fonts/',
-    lib  : BUILD + '/assets/lib/'
+    html  : BUILD + '/',
+    css   : BUILD + '/assets/css/',
+    js    : BUILD + '/assets/js/',
+    imgs  : BUILD + '/assets/images/',
+    fonts : BUILD + '/assets/fonts/',
+    lib   : BUILD + '/assets/lib/'
 }
 
 // CSS 파일 압축
@@ -77,18 +78,17 @@ let scssOptions = {
 // ===========================================================================================
 // 기본 업무
 // ===========================================================================================
-exports.default = series( fileDel,
-  parallel(
-    series( htmlComplie, scssCompile, concatJs, imgs, fontMove, libMove ),
-    brwSync,
-    watchFiles
+exports.default = series( fileDel, parallel(
+    series(htmlComplie, scssCompile, concatJs, imgs, fontMove, libMove), brwSync, watchFiles
   )
 );
 
 // ===========================================================================================
 // 빌드업무
 // ===========================================================================================
-exports.build = series( htmlComplie, scssCompile, cssMin, concatJs, jsMin, imgs, fontMove, libMove );
+exports.build = series(
+  htmlComplie, scssCompile, cssMin, concatJs, jsMove, jsMin, imgs, fontMove, libMove
+);
 
 // ===========================================================================================
 // 폴더 제거 업무
@@ -101,7 +101,7 @@ function fileDel() {
 // 관찰 업무
 // ===========================================================================================
 function watchFiles() {
-  watch(markup.html, htmlComplie).on('change', reload);
+  watch(markup.htmls, htmlComplie).on('change', reload);
   watch(markup.css, scssCompile).on('change', reload);
   watch(markup.js, concatJs).on('change', reload);
   watch(markup.imgs, imgs).on('change', reload);
@@ -163,18 +163,27 @@ function cssMin() {
 // ===========================================================================================
 function concatJs() {
   return src(markup.js)
-    .pipe(concat('common.js'))
+    .pipe(concat('common-lib.js'))
+    .pipe(uglify())
+    .pipe(rename('common-lib.min.js'))
     .pipe(dest(public.js))
 }
 
 // ===========================================================================================
-// JS 압축 업무
+// JS 이동 업무
+// ===========================================================================================
+function jsMove() {
+  return src(SRC + '/_assets/js/common.js')
+    .pipe(dest(public.js))
+};
+
+// ===========================================================================================
+// JS 이동 업무
 // ===========================================================================================
 function jsMin() {
-  return src(public.js)
+  return src(SRC + '/_assets/js/common.js')
     .pipe(uglify())
-    .pipe(rename('common.min.js'))
-    .pipe(dest(public.js + 'min/'))
+    .pipe(dest(public.js))
 };
 
 // ===========================================================================================
