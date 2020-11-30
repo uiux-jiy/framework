@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+<head>
+  @@include('../_include/_meta.html', {
+    "author": "작성자",
+    "description": "사이트 설명",
+    "keywords": "키워드 작성"
+  })@@include('../_include/_og.html', {
+    "ogTitle": "콘텐츠 제목",
+    "ogUrl": "웹페이지 URL",
+    "ogType": "웹페이지 타입(blog, website 등)",
+    "ogImage": "표시되는 이미지",
+    "ogSiteName": "웹사이트 이름(URL과 다름)",
+    "ogDescription": "웹페이지 설명(제목 아래에 표시)",
+    "twitterCard": "트위터 카드 타입(요약정보, 사진, 비디오)",
+    "twitterTitle": "콘텐츠 제목",
+    "twitterDescription": "웹페이지 설명",
+    "twitterImage": "표시되는 이미지",
+    "alIosUrl": "ios 앱 URL",
+    "alIosAppStoreId": "ios 앱스토어 ID",
+    "alIosAppName": "ios 앱 이름",
+    "alAndroidUrl": "안드로이드 앱 URL",
+    "alAndroidAppName": "안드로이드 앱 이름",
+    "alAndroidPackage": "안드로이드 패키지 이름",
+    "alWebUrl": "안드로이드 앱 URL"
+  })@@include('../_include/_favicon.html', {
+    "webRoot": ".",
+    "themeColor": "#ffffff"
+  })@@include('../_include/_title.html', {
+    "title": "페이지 제목"
+  })@@include('../_include/_top.html', {
+    "webRoot": "..",
+    "styleCommon": {
+      "markup": "common.css",
+      "build": "common.min.css"
+    },
+    "stylePage": {
+      "markup": "pages.css",
+      "build": "pages.min.css"
+    }
+  })
+</head>
+
+<body>
+  <!-- [Stert] Container -->
+  <main>
+  </main>
+  <!-- [End] Container -->
+
+  @@include('../_include/_bottom.html', {
+    "webRoot" : "..",
+    "jsLib": {
+      "markup": "common-lib.js",
+      "build": "common-lib.min.js"
+    },
+    "jsCommon": {
+      "markup": "common.js",
+      "build": "common.min.js"
+    }
+  })
+</body>
+
+</html>

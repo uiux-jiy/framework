@@ -29,7 +29,7 @@
     "themeColor": "#ffffff"
   })@@include('./_include/_title.html', {
     "title": "페이지 제목"
-  })@@include('./_include/_css.html', {
+  })@@include('./_include/_top.html', {
     "webRoot": ".",
     "styleCommon": {
       "markup": "common.css",
@@ -136,11 +136,11 @@
   </main>
   <!-- [End] Container -->
 
-  @@include('./_include/_js.html', {
+  @@include('./_include/_bottom.html', {
     "webRoot" : ".",
     "jsLib": {
-      "markup": "js-lib.js",
-      "build": "js-lib.min.js"
+      "markup": "common-lib.js",
+      "build": "common-lib.min.js"
     },
     "jsCommon": {
       "markup": "common.js",
