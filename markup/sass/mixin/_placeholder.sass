@@ -1,9 +1,20 @@
 // ===========================================================================================
-// 플레이스홀더 설정
+// 인풋 플레이스홀더 색상
 // ===========================================================================================
-=placeholder($placeholder-color)
-  &::-webkit-input-placeholder,
-  &::-moz-placeholder,
-  &:-ms-input-placeholder,
-  &:-moz-placeholder
+=placeholder($input-color, $placeholder-color)
+  color: $input-color
+
+  &::placeholder
+    opacity: 1
+
+  // Chrome
+  &::-webkit-input-placeholder
+    color: $placeholder-color
+
+  // IE
+  &:-ms-input-placeholder
+    color: $placeholder-color
+
+  // Firefox
+  &:-mos-input-placeholder
     color: $placeholder-color

@@ -13,6 +13,11 @@
 @import "mixin"
 
 // ===========================================================================================
+// [Library] 라이브러리 호출
+// ===========================================================================================
+@import "lib/smart-grid"
+
+// ===========================================================================================
 // [Base] 기본 스타일
 // ===========================================================================================
 @import "base/webfonts"
@@ -25,23 +30,47 @@
 @import "ui-kit"
 
 // ===========================================================================================
-// [Commnon] 미디어쿼리
-// ===========================================================================================
-+mobile
-  .test
-    width: 100px
-  +retina (2)
-    .retina-img
-      background: url('../assets/img.png') no-repeat
-      background-size: 100% auto
+// [Commnon] 공통 요소 & 레이아웃
+// ==========================================================================================
+.body-bg
+  background-color: $bg-black
+  height: 100vh
 
-%app
-  font-size: 12px
+.logo
+  position: relative
+  display: inline-block
+  font-size: 36px
+  font-weight: bold
+  font-family: Roboto
+  color: #d9dce0
+  padding-left: 52px
+  letter-spacing: ps-spacing(15)
+  span
+    font-weight: lighter
+    color: #56a7fa
+  &::before
+    position: absolute
+    display: inline-block
+    top: -5px
+    left: 0
+    width: 52px
+    height: 52px
+    content: ""
+    background:
+      image: url('../images/common/cam-icon.png')
+      image: url('../images/common/cam-icon.svg')
+      position: center
+      repeat: no-repeat
+      size: 100%
 
-+tablet
-  .test
-    width: 200px
++retina(2)
+  .logo
+    &::before
+      background:
+        image: url('../images/common/cam-icon@2x.png')
 
-+desktop
-  .test
-    width: 300px
++retina(3)
+  .logo
+    &::before
+      background:
+        image: url('../images/common/cam-icon@3x.png')

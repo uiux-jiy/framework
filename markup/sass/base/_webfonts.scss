@@ -1,28 +1,28 @@
 // ===========================================================================================
 // [Font] 웹폰트 설정
 // ===========================================================================================
-// 본문 폰트 사용
+// 본문 폰트 Noto Sans KR 사용
 @font-face {
   font-family: "Noto Sans KR";
   font-style: normal;
   font-weight: 300;
   src: local("Noto Sans Light"), local("NotoSans-Light"),
-       url("#{$font-root}/eot/NotoSansKR-Light.eot"),
-       url("#{$font-root}/eot/NotoSansKR-Light.eot?#iefix") format("embedded-opentype"),
-       url("#{$font-root}/woff/NotoSansKR-Light.woff") format("woff"),
-       url("#{$font-root}/otf/NotoSansKR-Light.otf") format("opentype");
+       url("#{$noto-font-path}/eot/NotoSansKR-Light.eot"),
+       url("#{$noto-font-path}/eot/NotoSansKR-Light.eot?#iefix") format("embedded-opentype"),
+       url("#{$noto-font-path}/woff/NotoSansKR-Light.woff") format("woff"),
+       url("#{$noto-font-path}/otf/NotoSansKR-Light.otf") format("opentype");
 }
 
-// 제목 폰트 사용
+// 제목 폰트 Noto Sans KR 사용
 @font-face {
   font-family: "Noto Sans KR";
   font-style: normal;
   font-weight: 400;
   src: local("Noto Sans Regular"), local("NotoSans-Regular"),
-       url("#{$font-root}/eot/NotoSansKR-Regular.eot"),
-       url("#{$font-root}/eot/NotoSansKR-Regular.eot?#iefix") format("embedded-opentype"),
-       url("#{$font-root}/woff/NotoSansKR-Regular.woff") format("woff"),
-       url("#{$font-root}/otf/NotoSansKR-Regular.otf") format("opentype");
+       url("#{$noto-font-path}/eot/NotoSansKR-Regular.eot"),
+       url("#{$noto-font-path}/eot/NotoSansKR-Regular.eot?#iefix") format("embedded-opentype"),
+       url("#{$noto-font-path}/woff/NotoSansKR-Regular.woff") format("woff"),
+       url("#{$noto-font-path}/otf/NotoSansKR-Regular.otf") format("opentype");
 }
 
 @font-face {
@@ -30,10 +30,10 @@
   font-style: normal;
   font-weight: 100;
   src: local("Noto Sans Thin"), local("NotoSans-Thin"),
-       url("#{$font-root}/eot/NotoSansKR-Thin.eot"),
-       url("#{$font-root}/eot/NotoSansKR-Thin.eot?#iefix") format("embedded-opentype"),
-       url("#{$font-root}/woff/NotoSansKR-Thin.woff") format("woff"),
-       url("#{$font-root}/otf/NotoSansKR-Thin.otf") format("opentype");
+       url("#{$noto-font-path}/eot/NotoSansKR-Thin.eot"),
+       url("#{$noto-font-path}/eot/NotoSansKR-Thin.eot?#iefix") format("embedded-opentype"),
+       url("#{$noto-font-path}/woff/NotoSansKR-Thin.woff") format("woff"),
+       url("#{$noto-font-path}/otf/NotoSansKR-Thin.otf") format("opentype");
 }
 
 @font-face {
@@ -41,10 +41,10 @@
   font-style: normal;
   font-weight: 350;
   src: local("Noto Sans DemiLight"), local("NotoSans-DemiLight"),
-       url("#{$font-root}/eot/NotoSansKR-DemiLight.eot"),
-       url("#{$font-root}/eot/NotoSansKR-DemiLight.eot?#iefix") format("embedded-opentype"),
-       url("#{$font-root}/woff/NotoSansKR-DemiLight.woff") format("woff"),
-       url("#{$font-root}/otf/NotoSansKR-DemiLight.otf") format("opentype");
+       url("#{$noto-font-path}/eot/NotoSansKR-DemiLight.eot"),
+       url("#{$noto-font-path}/eot/NotoSansKR-DemiLight.eot?#iefix") format("embedded-opentype"),
+       url("#{$noto-font-path}/woff/NotoSansKR-DemiLight.woff") format("woff"),
+       url("#{$noto-font-path}/otf/NotoSansKR-DemiLight.otf") format("opentype");
 }
 
 @font-face {
@@ -52,10 +52,10 @@
   font-style: normal;
   font-weight: 500;
   src: local("Noto Sans Medium"), local("NotoSans-Medium"),
-       url("#{$font-root}/eot/NotoSansKR-Medium.eot"),
-       url("#{$font-root}/eot/NotoSansKR-Medium.eot?#iefix") format("embedded-opentype"),
-       url("#{$font-root}/woff/NotoSansKR-Medium.woff") format("woff"),
-       url("#{$font-root}/otf/NotoSansKR-Medium.otf") format("opentype");
+       url("#{$noto-font-path}/eot/NotoSansKR-Medium.eot"),
+       url("#{$noto-font-path}/eot/NotoSansKR-Medium.eot?#iefix") format("embedded-opentype"),
+       url("#{$noto-font-path}/woff/NotoSansKR-Medium.woff") format("woff"),
+       url("#{$noto-font-path}/otf/NotoSansKR-Medium.otf") format("opentype");
 }
 
 @font-face {
@@ -63,10 +63,10 @@
   font-style: normal;
   font-weight: 700;
   src: local("Noto Sans Bold"), local("NotoSans-Bold"),
-       url("#{$font-root}/eot/NotoSansKR-Bold.eot"),
-       url("#{$font-root}/eot/NotoSansKR-Bold.eot?#iefix") format("embedded-opentype"),
-       url("#{$font-root}/woff/NotoSansKR-Bold.woff") format("woff"),
-       url("#{$font-root}/otf/NotoSansKR-Bold.otf") format("opentype");
+       url("#{$noto-font-path}/eot/NotoSansKR-Bold.eot"),
+       url("#{$noto-font-path}/eot/NotoSansKR-Bold.eot?#iefix") format("embedded-opentype"),
+       url("#{$noto-font-path}/woff/NotoSansKR-Bold.woff") format("woff"),
+       url("#{$noto-font-path}/otf/NotoSansKR-Bold.otf") format("opentype");
 }
 
 @font-face {
@@ -74,8 +74,48 @@
   font-style: normal;
   font-weight: 900;
   src: local("Noto Sans Black"), local("NotoSans-Black"),
-       url("#{$font-root}/eot/NotoSansKR-Black.eot"),
-       url("#{$font-root}/eot/NotoSansKR-Black.eot?#iefix") format("embedded-opentype"),
-       url("#{$font-root}/woff/NotoSansKR-Black.woff") format("woff"),
-       url("#{$font-root}/otf/NotoSansKR-Black.otf") format("opentype");
+       url("#{$noto-font-path}/eot/NotoSansKR-Black.eot"),
+       url("#{$noto-font-path}/eot/NotoSansKR-Black.eot?#iefix") format("embedded-opentype"),
+       url("#{$noto-font-path}/woff/NotoSansKR-Black.woff") format("woff"),
+       url("#{$noto-font-path}/otf/NotoSansKR-Black.otf") format("opentype");
+}
+
+// 아이콘 폰트 Font Awesome 5 사용
+@font-face {
+  font-family: 'Font Awesome 5 Brands';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("#{$fa-font-path}/fa-brands-400.eot");
+  src: url("#{$fa-font-path}/fa-brands-400.eot?#iefix")format("embedded-opentype"),
+       url("#{$fa-font-path}/fa-brands-400.woff2")format("woff2"),
+       url("#{$fa-font-path}/fa-brands-400.woff")format("woff"),
+       url("#{$fa-font-path}/fa-brands-400.ttf")format("truetype"),
+       url("#{$fa-font-path}/fa-brands-400.svg#fontawesome")format("svg");
+}
+
+@font-face {
+  font-family: 'Font Awesome 5 Free';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("#{$fa-font-path}/fa-regular-400.eot");
+  src: url("#{$fa-font-path}/fa-regular-400.eot?#iefix")format("embedded-opentype"),
+       url("#{$fa-font-path}/fa-regular-400.woff2")format("woff2"),
+       url("#{$fa-font-path}/fa-regular-400.woff")format("woff"),
+       url("#{$fa-font-path}/fa-regular-400.ttf")format("truetype"),
+       url("#{$fa-font-path}/fa-regular-400.svg#fontawesome")format("svg");
+}
+
+@font-face {
+  font-family: 'Font Awesome 5 Free';
+  font-style: normal;
+  font-weight: 900;
+  font-display: block;
+  src: url("#{$fa-font-path}/fa-solid-900.eot");
+  src: url("#{$fa-font-path}/fa-solid-900.eot?#iefix")format("embedded-opentype"),
+       url("#{$fa-font-path}/fa-solid-900.woff2")format("woff2"),
+       url("#{$fa-font-path}/fa-solid-900.woff")format("woff"),
+       url("#{$fa-font-path}/fa-solid-900.ttf")format("truetype"),
+       url("#{$fa-font-path}/fa-solid-900.svg#fontawesome")format("svg");
 }

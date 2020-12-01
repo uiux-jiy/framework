@@ -11,7 +11,7 @@
   z-index: 9999
   .popup-dim
     height: 100%
-    background: rgba(0, 0, 0, 0.1)
+    background: rgba(0, 0, 0, 0.5)
 
 // 팝업 영역
 .popup
@@ -19,6 +19,7 @@
   height: 100vh
   transform: inherit
   background: #fff
+  border-radius: $popup-header-radius
   box-shadow: 0 3px 10px rgba(0,0,0,0.3)
   transform-style: preserve-3d
   outline: 0
@@ -30,12 +31,15 @@
 .popup
   .popup-headline
     height: $popup-header-height
-    padding: 0 $popup-s-padding
+    padding: 0 $popup-mobile-padding
+    border-top-left-radius: $popup-header-radius
+    border-top-right-radius: $popup-header-radius
     background: $popup-header-bgcolor
-    @extend %clearfix
-    h2
+    .title
       float: left
-      color: #fff
+      font-size: 20px
+      font-weight: 300
+      color: #b0c0d2
       line-height: $popup-header-height
     .popup-close
       position: relative
@@ -67,15 +71,20 @@
 
 // 팝업 콘텐츠
 .popup
-  .popup-content-box
-    height: calc(100vh - #{$popup-header-height})
-    padding: $popup-s-padding
+  position: relative
+  .popup-wrap
+    padding: $popup-mobile-padding
     .popup-content
-      +clearfix($extend: false)
-    .popup-btn-box
+      +clearfix
+    .popup-buttons
+      position: absolute
+      bottom: 0
+      left: 0
+      right: 0
       font-size: 0
-      text-align: right
-      +clearfix($extend: false)
+      text-align: center
+      padding: 10px
+      +clearfix
       button, [role="button"]
         min-width: 60px
         margin-left: 10px
@@ -86,21 +95,19 @@
 
 +tablet
   .popup
-    width: $popup-box-width-default
-    height: $popup-box-heigh-default
-    .popup-content-box
-    @each $height-size in $popup-box-hight
-      &.h-#{$height-size}
-        height: $height-size
-        .popup-content
-          height: calc(#{$height-size} - (#{$popup-header-height} + #{$popup-btn-box} + #{$popup-m-padding}))
-    @each $width-size in $popup-box-width
-      &.w-#{$width-size}
-        width: $width-size
+    width: $popup-tablet-width
+    height: $popup-tablet-height
     .popup-headline
-      padding: 0 $popup-m-padding
-      h2
-        .popup-close
-          margin-top: 15px
-    .popup-content-box
-      padding: $popup-m-padding
+      padding: 0 $popup-tablet-padding
+    .popup-wrap
+      padding: $popup-tablet-padding
+
+
++desktop
+  .popup
+    width: $popup-desktop-width
+    height: $popup-desktop-height
+    .popup-headline
+      padding: 0 $popup-desktop-padding
+    .popup-wrap
+      padding: $popup-desktop-padding

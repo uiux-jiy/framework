@@ -29,19 +29,17 @@
     "themeColor": "#ffffff"
   })@@include('./_include/_title.html', {
     "title": "페이지 제목"
-  })@@include('./_include/_top.html', {
+  })@@include('./_include/_top-link.html', {
     "webRoot": ".",
     "styleCommon": {
       "markup": "common.css",
       "build": "common.min.css"
     },
     "stylePage": {
-      "markup": "pages.css",
-      "build": "pages.min.css"
+      "markup": "guide.css",
+      "build": "guide.min.css"
     }
   })
-  <!-- Style : Content Page -->
-  <link rel="stylesheet" href="./assets/css/guide.css">
 </head>
 
 <body>
@@ -52,22 +50,24 @@
 
       <!-- [Start] Convention -->
       <h3 class="url-title">Convention</h3>
+      <div class="location space">
+        <div class="link-box">
+          <li class="link-title no-fa">디바이스 지원 범위</li>
+          <li class="link-root no-root">Windows 10</li>
+        </div>
+        <div class="link-box">
+          <li class="link-title no-fa">브라우저 지원 범위</li>
+          <li class="link-root no-root">IE10+, Chrome</li>
+        </div>
+      </div>
       <div class="location">
-        <div class="link-box">
-          <li class="link-title">디바이스 지원 범위</li>
-          <li class="link-root">Windows 10</li>
-        </div>
-        <div class="link-box">
-          <li class="link-title">브라우저 지원 범위</li>
-          <li class="link-root">IE10+, Chrome</li>
-        </div>
         <a class="link-box" href="guide/ui-kit.html" target="_blank" >
           <p class="link-title">UI Kit</p>
           <p class="link-root">guide/ui-kit.html</p>
         </a>
-        <a class="link-box" href="front/example.html" target="_blank">
-          <p class="link-title check">Common UI</p>
-          <p class="link-root">front/example.html</p>
+        <a class="link-box" href="html/example.html" target="_blank">
+          <p class="link-title">Common UI</p>
+          <p class="link-root">html/example.html</p>
         </a>
       </div>
       <!-- [End] Convention -->
@@ -75,7 +75,7 @@
       <!-- [Start] Information Architecture (IA) -->
       <h3 class="url-title">Information Architecture (IA)</h3>
       <div class="location">
-        <h6 class="sub-title">파일명을 클릭하여 해당 페이지 확인하세요.</h6>
+        <p class="sub-title">파일명을 클릭하여 해당 페이지 확인하세요.</p>
         <table class="table-base">
           <caption>전체 페이지 링크 / 작업 진철율</caption>
           <colgroup>
@@ -99,6 +99,26 @@
           <tbody>
             <tr>
               <td>U01</td>
+              <td class="col-center">form</td>
+              <td>로그인</td>
+              <td></td>
+              <td>
+                <a href="html/login.html" target="_blank" class="link-root check" >html/login.html</a>
+              </td>
+              <td class="col-center">100%</td>
+            </tr>
+            <tr>
+              <td>U01-P01</td>
+              <td class="col-center">popup</td>
+              <td>로그인</td>
+              <td>회원가입</td>
+              <td>
+                <a href="html/popup/sign-up.html" target="_blank" class="link-root" >html/popup/sign-up.html</a>
+              </td>
+              <td class="col-center">0%</td>
+            </tr>
+            <tr>
+              <td>U02</td>
               <td class="col-center">from</td>
               <td>메인</td>
               <td></td>
@@ -108,22 +128,42 @@
               <td class="col-center">0%</td>
             </tr>
             <tr>
-              <td>U02</td>
-              <td class="col-center">from</td>
-              <td>로그인</td>
-              <td></td>
+              <td>U02-P01</td>
+              <td class="col-center">popup</td>
+              <td>메인</td>
+              <td>회의링크</td>
               <td>
-                <a href="html/login.html" target="_blank" class="link-root" >html/login.html</a>
+                <a href="html/.html" target="_blank" class="link-root" >html/.html</a>
               </td>
               <td class="col-center">0%</td>
             </tr>
             <tr>
-              <td>U02-P01</td>
-              <td class="col-center">popup</td>
-              <td>로그인</td>
-              <td>회원가입</td>
+              <td>U03</td>
+              <td class="col-center">view</td>
+              <td>대기실</td>
+              <td></td>
               <td>
-                <a href="html/popup/sign-up.html" target="_blank" class="link-root" >html/popup/sign-up.html</a>
+                <a href="html/waiting-room.html" target="_blank" class="link-root" >html/waiting-room.html</a>
+              </td>
+              <td class="col-center">0%</td>
+            </tr>
+            <tr>
+              <td>U03-P01</td>
+              <td class="col-center">popup</td>
+              <td>대기실</td>
+              <td>설정</td>
+              <td>
+                <a href="html/.html" target="_blank" class="link-root" >html/.html</a>
+              </td>
+              <td class="col-center">0%</td>
+            </tr>
+            <tr>
+              <td>U04</td>
+              <td class="col-center">view</td>
+              <td>미팅룸</td>
+              <td></td>
+              <td>
+                <a href="html/meeting-room.html" target="_blank" class="link-root" >html/meeting-room.html</a>
               </td>
               <td class="col-center">0%</td>
             </tr>
@@ -136,7 +176,7 @@
   </main>
   <!-- [End] Container -->
 
-  @@include('./_include/_bottom.html', {
+  @@include('./_include/_bottom-link.html', {
     "webRoot" : ".",
     "jsLib": {
       "markup": "common-lib.js",

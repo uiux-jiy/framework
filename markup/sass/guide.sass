@@ -34,6 +34,7 @@ body
   .title
     position: relative
     font-size: rem(34px)
+    font-weight: 400
     color: #1566c1
     letter-spacing: -0.03em
     padding-bottom: 10px
@@ -44,12 +45,12 @@ body
     font-weight: 300
     color: #aaa
     margin-top: 30px
-    margin-bottom: 10px
+    margin-bottom: 14px
     clear: both
   .sub-title
     font-size: rem(12px)
     font-weight: 300
-    color: #aaaaaa
+    color: #aaa
     margin-bottom: 10px
     text-align: right
     &::before
@@ -61,15 +62,21 @@ body
       padding: 20px
       background: #fff
       border: 1px solid #e2e2e2
-      @extend %clearfix
+      +clearfix
+      &.space
+        margin-bottom: 10px
 
       .link-box
         float: left
         width: 50%
         padding: 5px 0
         .link-title
+          &.no-fa
+            float: left
+            &::before
+              content: ""
           &::before
-            +fa($icon: "\f0c1", $fw: 900)
+            +fa("\f0c1", 900)
             font-size: rem(10px)
             color: #ccc
             vertical-align: middle
@@ -80,7 +87,7 @@ body
             margin-bottom: 0
           &.check
             &::before
-              +fa($icon: "\f00c", $fw: 900)
+              +fa("\f00c", 900)
               color: #e51d68
             &::after
               font-size: rem(12px)
@@ -89,6 +96,10 @@ body
               padding-left: 5px
 
         .link-root
+          &.no-root
+            float: left
+            font-size: rem(14px)
+            margin-left: 6px
           font-size: rem(12px)
           color: #aaa
           letter-spacing: 0.05em
@@ -103,9 +114,10 @@ body
 // [IA] UI 목록 링크
 // ===========================================================================================
 .guide
+  min-width: 1200px
   table
     width: 100%
-    font-size: rem(12px)
+    font-size: rem(14px)
     background-color: $table-base-bg
     border-top: 2px solid #000
     thead
@@ -119,14 +131,14 @@ body
         border: 1px $table-base-border solid
         .link-root
           &::before
-            +fa($icon: "\f0c1", $fw: 900)
+            +fa("\f0c1", 900)
             font-size: rem(10px)
             color: #ccc
             vertical-align: middle
             padding-right: 5px
           &.check
             &::before
-              +fa($icon: "\f00c", $fw: 900)
+              +fa("\f00c", 900)
               color: #e51d68
       th, td
         height: $table-base-row-height

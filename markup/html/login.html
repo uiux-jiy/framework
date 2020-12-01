@@ -10,8 +10,8 @@
     "webRoot": "..",
     "themeColor": "#ffffff"
   })@@include('../_include/_title.html', {
-    "title": "페이지 제목"
-  })@@include('../_include/_top.html', {
+    "title": "EMLook Meet"
+  })@@include('../_include/_top-link.html', {
     "webRoot": "..",
     "styleCommon": {
       "markup": "common.css",
@@ -26,14 +26,46 @@
 
 <body>
   <!-- [Stert] Container -->
-  <main class="grid">
+  <main class="body-bg">
     <div class="login-box">
       <a class="logo" href="/">EMLook <span>Meet</span></a>
+      <div class="login-form">
+        <p><span>환영합니다.</span><br>
+        Please sign in to your account.<br>
+        계정이 없으신가요? <a href="" class="popup-button" data-id="popup-sign-up" role="button">지금 가입하기</a></p>
+        <form>
+          <div class="user-login">
+            <div class="user-id">
+              <strong>ID</strong>
+              <input class="full" type="text" id="user_id" placeholder="아이디" autocomplete="off">
+              <label class="error-message" for="user_id">아이디를 입력해 주세요.</label>
+              <!-- 오류메시지 출력 시 : input[class="error"] 추가 / label[class="on"] 추가 -->
+              <!-- <input class="full" type="text" id="user_id" placeholder="아이디" autocomplete="off">
+              <label class="error-message on" for="user_id">아이디를 입력해 주세요.</label> -->
+            </div>
+            <div class="user-pw">
+              <strong>Password</strong>
+              <input class="full" type="password" id="user_pw" placeholder="비밀번호" autocomplete="off">
+              <label class="error-message" for="user_pw">비밀번호를 입력해 주세요.</label>
+              <!-- 오류메시지 출력 시 : input[class="error"] 추가 / label[class="on"] 추가 -->
+              <!-- <input class="full error" type="password" id="user_pw" placeholder="비밀번호" autocomplete="off">
+              <label class="error-message on" for="user_pw">비밀번호를 입력해 주세요.</label> -->
+            </div>
+          </div>
+          <input class="login-button" role="button" type="submit" value="로그인"">
+        </form>
+      </div>
     </div>
   </main>
   <!-- [End] Container -->
 
-  @@include('../_include/_bottom.html', {
+  <!-- [Start] 회원가입 팝업 -->
+  @@include('_popup/sign-up.html', {
+    "dataId": "popup-sign-up"
+  })
+  <!-- [End] 회원가입 팝업 -->
+
+  @@include('../_include/_bottom-link.html', {
     "webRoot" : "..",
     "jsLib": {
       "markup": "common-lib.js",

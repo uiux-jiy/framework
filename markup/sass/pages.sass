@@ -6,7 +6,109 @@
 /* ======================================================================================== */
 
 // ===========================================================================================
-// [Page1] 메인 페이지
+// [Framework] 공통 정의
 // ===========================================================================================
-.grid
-  color: #c72020
+@import "function"
+@import "variable"
+@import "mixin"
+
+// ===========================================================================================
+// [Library] 라이브러리 호출
+// ===========================================================================================
+@import "lib/smart-grid"
+
+// ===========================================================================================
+// [login.html] 로그인 페이지
+// ===========================================================================================
+.login-box
+  min-width: 320px
+  width: 100%
+  padding: 0 20px
+  +vw-vh-align
+  .login-form
+    > p
+      color: $bg-gray
+      font-weight: 300
+      padding-left: 20px
+      margin-top: 20px
+      margin-bottom: 40px
+      span
+        font-size: 40px
+        line-height: 1.5
+        letter-spacing: ps-spacing(-10)
+      a
+        color: #56a7fa
+        margin-left: 6px
+        &:hover, &:focus
+          border-bottom: 1px solid #56a7fa
+    form
+      .user-login
+        padding-bottom: 30px
+        border-bottom: 1px solid #525252
+        [class*="user-"]
+          width: 100%
+          color: $bg-gray
+          &:first-child
+            margin-right: 20px
+            margin-bottom: 20px
+          strong
+            display: block;
+            font-size: 14px
+            font-weight: 300
+            color: #ffffff
+            margin: 0 0 10px 10px
+          input
+            font-size: 18px
+            color: $bg-blue
+            height: 50px
+            border-color: #fff
+            border-radius: radius(50px)
+            padding-left: radius(50px)
+            &:focus
+              border-color: #56a7fa
+              box-shadow: 0 0 10px #1566c1
+            &.error
+              box-shadow: 0 0 10px #f3300e !important
+          .error-message
+            display: none
+            position: relative
+            color: $point-red
+            margin-top: 10px
+            margin-left: 25px
+            &::before
+              +fa("\f06a", 900)
+              margin-right: 6px
+            &.on
+              display: block
+
+      .login-button
+        float: right
+        height: 50px
+        font-size: 16px
+        color: #ffffff
+        border-width: 0
+        margin-top: 30px
+        border-radius: radius(50px)
+        background-color: #379cf3
+        &:hover, &:focus
+          background-color: #e07c00
+
+
++tablet
+  .login-box
+    min-width: 500px
+    .login-form
+      form
+        .user-login
+          +clearfix
+          [class*="user-"]
+            width: calc( 50% - 10px )
+            float: left
+            &:first-child
+              margin-bottom: 0
+
++desktop
+  .login-box
+    min-width: 800px
+    width: auto
+    padding: 0 30px

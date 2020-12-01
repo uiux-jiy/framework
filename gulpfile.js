@@ -31,7 +31,8 @@ let markup = {
     html  : [SRC + '/**/*.html', '!markup/_*/**/*.html'],
     htmls : SRC + '/**/*.html',
     css   : SRC + '/sass/**/*.{sass,scss}',
-    js    : [SRC + '/_assets/js/**/*.js', '!markup/_assets/js/common.js'],
+    jscom : [SRC + '/_assets/js/common/**/*.js', '!markup/_assets/js/**/_*.js'],
+    jslib : [SRC + '/_assets/js/lib/**/*.js', '!markup/_assets/js/**/_*.js'],
     imgs  : SRC + '/_assets/images/**/*',
     fonts : SRC + '/_assets/fonts/**/*',
     lib   : SRC + '/_assets/lib/**/*'
@@ -79,7 +80,8 @@ let scssOptions = {
 // 기본 업무
 // ===========================================================================================
 exports.default = series( fileDel, parallel(
-    series(htmlComplie, scssCompile, concatJs, imgs, fontMove, libMove), brwSync, watchFiles
+    series(htmlComplie, scssCompile, jsLibrary, jsCommon, imgs, fontMove, libMove, brwSync),
+    watchFiles
   )
 );
 
@@ -87,7 +89,7 @@ exports.default = series( fileDel, parallel(
 // 빌드업무
 // ===========================================================================================
 exports.build = series(
-  htmlComplie, scssCompile, cssMin, concatJs, jsMove, jsMin, imgs, fontMove, libMove
+  htmlComplie, scssCompile, cssMin, jsLibMin, jsComMin, imgs, fontMove, libMove
 );
 
 // ===========================================================================================
@@ -101,11 +103,13 @@ function fileDel() {
 // 관찰 업무
 // ===========================================================================================
 function watchFiles() {
-  watch(markup.htmls, htmlComplie).on('change', reload);
-  watch(markup.css, scssCompile).on('change', reload);
-  watch(markup.js, concatJs).on('change', reload);
   watch(markup.imgs, imgs).on('change', reload);
+  watch(markup.fonts, fontMove).on('change', reload);
   watch(markup.lib, libMove).on('change', reload);
+  watch(markup.jslib, jsLibrary).on('change', reload);
+  watch(markup.jscom, jsCommon).on('change', reload);
+  watch(markup.css, scssCompile).on('change', reload);
+  watch(markup.htmls, htmlComplie).on('change', reload);
 }
 
 // ===========================================================================================
@@ -122,7 +126,7 @@ function brwSync() {
 }
 
 // ===========================================================================================
-// Include(Gulp File Include) 업무
+// Include 업무
 // ===========================================================================================
 function htmlComplie() {
   return src(markup.html)
@@ -159,35 +163,42 @@ function cssMin() {
 };
 
 // ===========================================================================================
-// JS 병합 업무
+// JS 업무
 // ===========================================================================================
-function concatJs() {
-  return src(markup.js)
+// Library 병합
+function jsLibrary() {
+  return src(markup.jslib)
+    .pipe(concat('common-lib.js'))
+    .pipe(dest(public.js))
+}
+
+// Library 압축
+function jsLibMin() {
+  return src(markup.jslib)
     .pipe(concat('common-lib.js'))
     .pipe(uglify())
     .pipe(rename('common-lib.min.js'))
     .pipe(dest(public.js))
 }
 
-// ===========================================================================================
-// JS 이동 업무
-// ===========================================================================================
-function jsMove() {
-  return src(SRC + '/_assets/js/common.js')
+// Common 병합
+function jsCommon() {
+  return src(markup.jscom)
+    .pipe(concat('common.js'))
     .pipe(dest(public.js))
 };
 
-// ===========================================================================================
-// JS 이동 업무
-// ===========================================================================================
-function jsMin() {
-  return src(SRC + '/_assets/js/common.js')
+// Common 압축
+function jsComMin() {
+  return src(markup.jscom)
+    .pipe(concat('common.js'))
     .pipe(uglify())
+    .pipe(rename('common.min.js'))
     .pipe(dest(public.js))
 };
 
 // ===========================================================================================
-// Images min 업무
+// Images 압축 업무
 // ===========================================================================================
 function imgs() {
   return src(markup.imgs)

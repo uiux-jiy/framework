@@ -7,17 +7,27 @@ input
   line-height: $input-height - ($input-border-width * 2)
   padding: 0 $input-padding
   border: $input-border-width solid $input-border-color
-  border-radius: $input-border-radius !important
+  border-radius: $input-border-radius
   background: $input-bg
   vertical-align: top
-  +placeholder($input-placeholder)
+  +placeholder($input-font-color, $input-placeholder)
+  + label
+    display: inline-block
   &:focus
     border:
       width: $input-border-width
       style: solid
       color: $input-border-focus
+  &.error
+    &:focus
+      border:
+        color: $input-border-error
+  &.error
+    border:
+      color: $input-border-error !important
   &.full
     width: 100%
+
 
 +ie10-11
   input
@@ -25,7 +35,7 @@ input
 
 .input-box
   display: inline-block
-  @extend %clearfix
+  +clearfix
   input
     width: calc( 100% - #{$input-label-width} )
   label
